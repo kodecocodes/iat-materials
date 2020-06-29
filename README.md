@@ -8,5 +8,5 @@ Each edition has its own branch, named `editions/[EDITION]`. The default branch 
 
 | Branch                                                                           | Edition | Release Date |
 | -------------------------------------------------------------------------------- |:-------:|:------------:|
+| [editions/7.0](https://github.com/raywenderlich/iat-materials/tree/editions/7.0) | 7.0     | YYYY-MM-DD   |
 | [editions/6.0](https://github.com/raywenderlich/iat-materials/tree/editions/6.0) | 6.0     | 2019-10-02   |
-
