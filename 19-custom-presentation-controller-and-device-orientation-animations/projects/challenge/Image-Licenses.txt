@@ -1,0 +1,23 @@
+Basil image:
+* author http://commons.wikimedia.org/wiki/User:Castielli
+* license http://creativecommons.org/licenses/by-sa/3.0
+
+Saffron image:
+* author http://commons.wikimedia.org/wiki/User:Lin%C3%A91
+* license http://creativecommons.org/licenses/by-sa/3.0
+
+Marjorana image:
+* author http://commons.wikimedia.org/wiki/User:Raul654
+* license http://creativecommons.org/licenses/by-sa/3.0
+
+Rosemary image:
+* author http://commons.wikimedia.org/wiki/User:Fir0002
+* license http://www.gnu.org/licenses/old-licenses/fdl-1.2.html
+
+Anise image:
+* author http://commons.wikimedia.org/wiki/File:AniseSeeds.jpg
+* license http://commons.wikimedia.org/wiki/User:Ben_pcc
+
+Market image:
+* author http://www.flickr.com/people/heydrienne/
+* license http://creativecommons.org/licenses/by/2.0
