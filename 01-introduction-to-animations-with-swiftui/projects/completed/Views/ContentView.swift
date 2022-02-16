@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ struct ContentView : View {
             .offset(x: 0, y: -15)
             .padding(.leading, 30)
             .offset(x: self.zoomed ? 500 : 0, y: -15)
-            .animation(.default)
+			.animation(.default, value: self.zoomed)
 
           Spacer()
         }
@@ -57,7 +57,7 @@ struct ContentView : View {
           .position(x: self.zoomed ? 220 : 600, y: 50)
           .scaleEffect(self.zoomed ? 1.33 : 0.33)
           .shadow(radius: 10)
-            .animation(.spring())
+		  .animation(.spring(), value: self.zoomed)
           .onTapGesture {
             self.zoomed.toggle()
           }

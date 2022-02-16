@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ struct StarterView: View {
             Circle()
                 .scaleEffect(0.5)
                 .foregroundColor(colors[currentOffset])
-                .animation(.default)
+				.animation(.default, value: self.currentOffset)
                 .offset(x: offsets[currentOffset].x,
                         y: offsets[currentOffset].y)
         }
