@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C4C8BFE22C0CE8800BFCF2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */; };
-		9C4C8C0022C0CE8800BFCF2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */; };
+		9C2A37D527BDA38300F2D539 /* SpinnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */; };
 		9C4C8C0422C0CE8900BFCF2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */; };
 		9C4C8C0A22C0CE8900BFCF2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4C8C0822C0CE8900BFCF2E /* LaunchScreen.storyboard */; };
 		9C8A525122C0CEF0003EBEBC /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A525022C0CEF0003EBEBC /* SpinnerView.swift */; };
@@ -16,9 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerApp.swift; sourceTree = "<group>"; };
 		9C4C8BFA22C0CE8800BFCF2E /* Spinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C4C8C0922C0CE8900BFCF2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C4C8C0B22C0CE8900BFCF2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +54,7 @@
 		9C4C8BFC22C0CE8800BFCF2E /* Spinner */ = {
 			isa = PBXGroup;
 			children = (
+				9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */,
 				9C8A525022C0CEF0003EBEBC /* SpinnerView.swift */,
 				9C8A525322C0CF19003EBEBC /* Assets */,
 			);
@@ -66,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				9C93EE2E22C0D1D200C225F4 /* Delay.swift */,
-				9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */,
-				9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */,
 				9C4C8C0B22C0CE8900BFCF2E /* Info.plist */,
 				9C4C8C0822C0CE8900BFCF2E /* LaunchScreen.storyboard */,
 				9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */,
@@ -145,10 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C4C8BFE22C0CE8800BFCF2E /* AppDelegate.swift in Sources */,
+				9C2A37D527BDA38300F2D539 /* SpinnerApp.swift in Sources */,
 				9C93EE2F22C0D1D200C225F4 /* Delay.swift in Sources */,
 				9C8A525122C0CEF0003EBEBC /* SpinnerView.swift in Sources */,
-				9C4C8C0022C0CE8800BFCF2E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +284,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spinner/Assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +304,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spinner/Assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

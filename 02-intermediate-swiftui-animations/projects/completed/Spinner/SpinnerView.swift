@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,8 @@ struct SpinnerView: View {
         .offset(x: isCurrent ? 10 : 0, y: isCurrent ? 40 : 70)
         .scaleEffect(isCurrent ? 0.5 : 1.0)
         .rotationEffect(isCompleting ? .zero : rotation)
-        .animation(.easeInOut(duration: 1.5))
+		.animation(.easeInOut(duration: 1.5), value: isCurrent)
+		.animation(.easeInOut(duration: 1.5), value: isCompleting)
     }
   }
   
@@ -83,7 +84,7 @@ struct SpinnerView: View {
               self.currentOffset = .zero
             })
         )
-        .animation(.easeInOut(duration: 1.0))
+		.animation(.easeInOut(duration: 1.0), value: currentOffset)
         .transition(shootUp)
         .onAppear(perform: animate)
       }
