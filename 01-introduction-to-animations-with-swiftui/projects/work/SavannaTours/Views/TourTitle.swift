@@ -26,13 +26,24 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Foundation
 import SwiftUI
 
-@main
-struct SavannaToursApp: App {
-	var body: some Scene {
-		WindowGroup {
-			StarterView()
-		}
-	}
+struct TourTitle: View {
+  let title: String
+  let caption: String
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      Text(title)
+        .font(.largeTitle)
+        .fontWeight(.bold)
+        .shadow(radius: 5)
+        .foregroundColor(.white)
+      
+      Text(caption)
+        .font(.caption)
+        .foregroundColor(.white)
+    }
+  }
 }

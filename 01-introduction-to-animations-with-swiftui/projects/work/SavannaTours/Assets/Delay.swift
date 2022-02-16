@@ -26,13 +26,8 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-@main
-struct SavannaToursApp: App {
-	var body: some Scene {
-		WindowGroup {
-			StarterView()
-		}
-	}
+func delay(seconds: TimeInterval, block: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: block)
 }

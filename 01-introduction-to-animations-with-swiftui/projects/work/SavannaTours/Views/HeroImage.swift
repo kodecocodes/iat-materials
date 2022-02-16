@@ -26,13 +26,16 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Foundation
 import SwiftUI
 
-@main
-struct SavannaToursApp: App {
-	var body: some Scene {
-		WindowGroup {
-			StarterView()
-		}
-	}
+struct HeroImage: View {
+  let name: String
+
+  var body: some View {
+    Image(name)
+      .resizable()
+      .edgesIgnoringSafeArea(.top)
+      .frame(height: 300)
+  }
 }
