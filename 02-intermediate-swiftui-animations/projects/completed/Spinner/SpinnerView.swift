@@ -41,8 +41,8 @@ struct SpinnerView: View {
         .offset(x: isCurrent ? 10 : 0, y: isCurrent ? 40 : 70)
         .scaleEffect(isCurrent ? 0.5 : 1.0)
         .rotationEffect(isCompleting ? .zero : rotation)
-		.animation(.easeInOut(duration: 1.5), value: isCurrent)
-		.animation(.easeInOut(duration: 1.5), value: isCompleting)
+        .animation(.easeInOut(duration: 1.5), value: isCurrent)
+        .animation(.easeInOut(duration: 1.5), value: isCompleting)
     }
   }
   
@@ -84,7 +84,7 @@ struct SpinnerView: View {
               self.currentOffset = .zero
             })
         )
-		.animation(.easeInOut(duration: 1.0), value: currentOffset)
+        .animation(.easeInOut(duration: 1.0), value: currentOffset)
         .transition(shootUp)
         .onAppear(perform: animate)
       }
@@ -97,7 +97,9 @@ struct SpinnerView: View {
     completed = true
     currentIndex = nil
     delay(seconds: 2) {
-      self.isVisible = false
+			withAnimation {
+			  self.isVisible = false
+			}
     }
   }
   
