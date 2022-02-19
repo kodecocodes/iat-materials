@@ -59,7 +59,9 @@
 				9CB56BC31A2DCFB400D15A33 /* MultiplayerSearch */,
 				9CB56BC21A2DCFB400D15A33 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9CB56BC21A2DCFB400D15A33 /* Products */ = {
 			isa = PBXGroup;
@@ -106,6 +108,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CB56BE01A2DCFB400D15A33 /* Build configuration list for PBXNativeTarget "MultiplayerSearch" */;
 			buildPhases = (
+				7947C36C27C120C70000C557 /* ShellScript */,
 				9CB56BBD1A2DCFB400D15A33 /* Sources */,
 				9CB56BBE1A2DCFB400D15A33 /* Frameworks */,
 				9CB56BBF1A2DCFB400D15A33 /* Resources */,
@@ -167,6 +170,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7947C36C27C120C70000C557 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CB56BBD1A2DCFB400D15A33 /* Sources */ = {
