@@ -42,7 +42,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func actionSearchAgain() {
-    UIApplication.shared.keyWindow!.rootViewController = storyboard!.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+    UIApplication.shared.delegate?.window!?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "ViewController") as UIViewController
   }
 }
 
