@@ -53,7 +53,7 @@ class ViewController: UIViewController {
 
 	// MARK: further UI
 
-	let spinner = UIActivityIndicatorView(style: .whiteLarge)
+	let spinner = UIActivityIndicatorView(style: .large)
 	let status = UIImageView(image: UIImage(named: "banner"))
 	let label = UILabel()
 	let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
