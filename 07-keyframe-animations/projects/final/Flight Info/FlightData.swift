@@ -30,7 +30,6 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import Foundation
 
 //
@@ -62,7 +61,8 @@ let londonToParis = FlightData(
   weatherImageName: "bg-snowy",
   showWeatherEffects: true,
   isTakingOff: true,
-  flightStatus: "Boarding")
+  flightStatus: "Boarding"
+)
 
 let parisToRome = FlightData(
   summary: "01 Apr 2015 17:05",
@@ -73,5 +73,5 @@ let parisToRome = FlightData(
   weatherImageName: "bg-sunny",
   showWeatherEffects: false,
   isTakingOff: false,
-  flightStatus: "Delayed")
-
+  flightStatus: "Delayed"
+)

@@ -30,11 +30,10 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 // A delay function
-func delay(seconds: Double, completion: @escaping ()-> Void) {
+func delay(seconds: Double, completion: @escaping () -> Void) {
   DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
@@ -60,7 +59,6 @@ func roundCorners(layer: CALayer, toRadius: CGFloat) {
 }
 
 class ViewController: UIViewController {
-
   // MARK: IB outlets
 
   @IBOutlet var loginButton: UIButton!
@@ -110,7 +108,7 @@ class ViewController: UIViewController {
 
     statusPosition = status.center
 
-    info.frame = CGRect(x: 0.0, y: loginButton.center.y + 60.0,  width: view.frame.size.width, height: 30)
+    info.frame = CGRect(x: 0.0, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
     info.backgroundColor = UIColor.clear
     info.font = UIFont(name: "HelveticaNeue", size: 12.0)
     info.textAlignment = .center
@@ -127,8 +125,8 @@ class ViewController: UIViewController {
     formGroup.fillMode = .backwards
 
     let flyRight = CABasicAnimation(keyPath: "position.x")
-    flyRight.fromValue = -view.bounds.size.width/2
-    flyRight.toValue = view.bounds.size.width/2
+    flyRight.fromValue = -view.bounds.size.width / 2
+    flyRight.toValue = view.bounds.size.width / 2
 
     let fadeFieldIn = CABasicAnimation(keyPath: "opacity")
     fadeFieldIn.fromValue = 0.25
@@ -214,7 +212,9 @@ class ViewController: UIViewController {
   func showMessage(index: Int) {
     label.text = messages[index]
 
-    UIView.transition(with: status, duration: 0.33,
+    UIView.transition(
+			with: status,
+			duration: 0.33,
       options: [.curveEaseOut, .transitionFlipFromBottom],
       animations: {
         self.status.isHidden = false
@@ -222,7 +222,7 @@ class ViewController: UIViewController {
       completion: {_ in
         //transition completion
         delay(seconds: 2.0) {
-          if index < self.messages.count-1 {
+          if index < self.messages.count - 1 {
             self.removeMessage(index: index)
           } else {
             //reset form
@@ -234,8 +234,9 @@ class ViewController: UIViewController {
   }
 
   func removeMessage(index: Int) {
-
-    UIView.animate(withDuration: 0.33, delay: 0.0,
+    UIView.animate(
+			withDuration: 0.33,
+			delay: 0.0,
       animations: {
         self.status.center.x += self.view.frame.size.width
       },
@@ -243,13 +244,16 @@ class ViewController: UIViewController {
         self.status.isHidden = true
         self.status.center = self.statusPosition
 
-        self.showMessage(index: index+1)
+        self.showMessage(index: index + 1)
       }
     )
   }
 
   func resetForm() {
-    UIView.transition(with: status, duration: 0.2, options: .transitionFlipFromTop,
+    UIView.transition(
+			with: status,
+			duration: 0.2,
+			options: .transitionFlipFromTop,
       animations: {
         self.status.isHidden = true
         self.status.center = self.statusPosition
@@ -258,9 +262,12 @@ class ViewController: UIViewController {
         let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
         tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
         roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
-    })
+			}
+		)
 
-    UIView.animate(withDuration: 0.2, delay: 0.0,
+    UIView.animate(
+			withDuration: 0.2,
+			delay: 0.0,
       animations: {
         self.spinner.center = CGPoint(x: -20.0, y: 16.0)
         self.spinner.alpha = 0.0
@@ -273,11 +280,9 @@ class ViewController: UIViewController {
     let wobble = CAKeyframeAnimation(keyPath: "transform.rotation")
     wobble.duration = 0.25
     wobble.repeatCount = 4
-    wobble.values = [0.0, -.pi/4.0, 0.0, .pi/4.0, 0.0]
+    wobble.values = [0.0, -.pi / 4.0, 0.0, .pi / 4.0, 0.0]
     wobble.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
     heading.layer.add(wobble, forKey: nil)
-
-
   }
 
   // MARK: further methods
@@ -285,7 +290,10 @@ class ViewController: UIViewController {
   @IBAction func login() {
     view.endEditing(true)
 
-    UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2,
+    UIView.animate(
+			withDuration: 1.5,
+			delay: 0.0,
+			usingSpringWithDamping: 0.2,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.bounds.size.width += 80.0
@@ -295,11 +303,14 @@ class ViewController: UIViewController {
       }
     )
 
-    UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7,
+    UIView.animate(
+			withDuration: 0.33,
+			delay: 0.0,
+			usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y += 60.0
-        self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
+        self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height / 2)
         self.spinner.alpha = 1.0
       },
       completion: nil
@@ -316,11 +327,13 @@ class ViewController: UIViewController {
 
     let flight = CAKeyframeAnimation(keyPath: "position")
     flight.duration = 12.0
-    flight.values = [
-      CGPoint(x: -50.0, y: 0.0),
-      CGPoint(x: view.frame.width + 50.0, y: 160.0),
-      CGPoint(x: -50.0, y: loginButton.center.y)
-      ].map { NSValue(cgPoint: $0) }
+    flight.values =
+			[
+				CGPoint(x: -50.0, y: 0.0),
+				CGPoint(x: view.frame.width + 50.0, y: 160.0),
+				CGPoint(x: -50.0, y: loginButton.center.y)
+			]
+			.map { NSValue(cgPoint: $0) }
 
     flight.keyTimes = [0.0, 0.5, 1.0]
     balloon.add(flight, forKey: nil)
@@ -328,7 +341,6 @@ class ViewController: UIViewController {
   }
 
   func animateCloud(layer: CALayer) {
-
     //1
     let cloudSpeed = 60.0 / Double(view.layer.frame.size.width)
     let duration: TimeInterval = Double(view.layer.frame.size.width - layer.frame.origin.x) * cloudSpeed
@@ -336,7 +348,7 @@ class ViewController: UIViewController {
     //2
     let cloudMove = CABasicAnimation(keyPath: "position.x")
     cloudMove.duration = duration
-    cloudMove.toValue = self.view.bounds.size.width + layer.bounds.width/2
+    cloudMove.toValue = self.view.bounds.size.width + layer.bounds.width / 2
     cloudMove.delegate = self
     cloudMove.fillMode = .forwards
     cloudMove.setValue("cloud", forKey: "name")
@@ -351,12 +363,10 @@ class ViewController: UIViewController {
     nextField?.becomeFirstResponder()
     return true
   }
-
 }
 
 extension ViewController: CAAnimationDelegate {
-  func animationDidStop(_ anim: CAAnimation,
-                        finished flag: Bool) {
+  func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     print("animation did finish")
 
     guard let name = anim.value(forKey: "name") as? String else {
@@ -381,13 +391,12 @@ extension ViewController: CAAnimationDelegate {
       if let layer = anim.value(forKey: "layer") as? CALayer {
         anim.setValue(nil, forKey: "layer")
 
-        layer.position.x = -layer.bounds.width/2
+        layer.position.x = -layer.bounds.width / 2
         delay(seconds: 0.5) {
           self.animateCloud(layer: layer)
         }
       }
     }
-
   }
 }
 

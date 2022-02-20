@@ -30,10 +30,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {  
-  var window: UIWindow?
+class AppDelegate: UIResponder, UIApplicationDelegate {
+	var window: UIWindow?
 }

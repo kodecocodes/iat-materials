@@ -30,195 +30,202 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-
 import UIKit
 import QuartzCore
 
 // A delay function
-func delay(seconds: Double, completion: @escaping ()-> Void) {
-  DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+func delay(seconds: Double, completion: @escaping () -> Void) {
+	DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
 class ViewController: UIViewController {
+	enum AnimationDirection: Int {
+		case positive = 1
+		case negative = -1
+	}
 
-  enum AnimationDirection: Int {
-    case positive = 1
-    case negative = -1
-  }
+	@IBOutlet var bgImageView: UIImageView!
 
-  @IBOutlet var bgImageView: UIImageView!
-  
-  @IBOutlet var summaryIcon: UIImageView!
-  @IBOutlet var summary: UILabel!
-  
-  @IBOutlet var flightNr: UILabel!
-  @IBOutlet var gateNr: UILabel!
-  @IBOutlet var departingFrom: UILabel!
-  @IBOutlet var arrivingTo: UILabel!
-  @IBOutlet var planeImage: UIImageView!
-  
-  @IBOutlet var flightStatus: UILabel!
-  @IBOutlet var statusBanner: UIImageView!
-  
-  var snowView: SnowView!
-  
-  //MARK: view controller methods
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    //adjust ui
-    summary.addSubview(summaryIcon)
-    summaryIcon.center.y = summary.frame.size.height/2
-    
-    //add the snow effect layer
-    snowView = SnowView(frame: CGRect(x: -150, y:-100, width: 300, height: 50))
-    let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
-    snowClipView.clipsToBounds = true
-    snowClipView.addSubview(snowView)
-    view.addSubview(snowClipView)
-    
-    //start rotating the flights
-    changeFlight(to: londonToParis)
-  }
-  
-  //MARK: custom methods
-  
-  func changeFlight(to data: FlightData, animated: Bool = false) {
-    
-    // populate the UI with the next flight's data
-    summary.text = data.summary
+	@IBOutlet var summaryIcon: UIImageView!
+	@IBOutlet var summary: UILabel!
 
-    if animated {
-      fade(imageView: bgImageView,
-           toImage: UIImage(named: data.weatherImageName)!,
-           showEffects: data.showWeatherEffects)
+	@IBOutlet var flightNr: UILabel!
+	@IBOutlet var gateNr: UILabel!
+	@IBOutlet var departingFrom: UILabel!
+	@IBOutlet var arrivingTo: UILabel!
+	@IBOutlet var planeImage: UIImageView!
 
-      let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
+	@IBOutlet var flightStatus: UILabel!
+	@IBOutlet var statusBanner: UIImageView!
 
-      cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
-      cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
+	var snowView: SnowView!
 
-      let offsetDeparting = CGPoint(x: CGFloat(direction.rawValue * 80), y: 0.0)
-      moveLabel(label: departingFrom, text: data.departingFrom, offset: offsetDeparting)
+	// MARK: view controller methods
 
-      let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
-      moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-      cubeTransition(label: flightStatus, text: data.flightStatus,  direction: direction)
+		//adjust ui
+		summary.addSubview(summaryIcon)
+		summaryIcon.center.y = summary.frame.size.height / 2
 
-      planeDepart()
-    } else {
-      bgImageView.image = UIImage(named: data.weatherImageName)
-      snowView.isHidden = !data.showWeatherEffects
+		//add the snow effect layer
+		snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
+		let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
+		snowClipView.clipsToBounds = true
+		snowClipView.addSubview(snowView)
+		view.addSubview(snowClipView)
 
-      flightNr.text = data.flightNr
-      gateNr.text = data.gateNr
-      departingFrom.text = data.departingFrom
-      arrivingTo.text = data.arrivingTo
-      flightStatus.text = data.flightStatus
-    }
-    
-    // schedule next flight
-    delay(seconds: 3.0) {
-      self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis, animated: true)
-    }
-  }
+		//start rotating the flights
+		changeFlight(to: londonToParis)
+	}
 
-  func fade(imageView: UIImageView, toImage: UIImage, showEffects: Bool) {
-    UIView.transition(with: imageView, duration: 1.0, options: .transitionCrossDissolve, animations: {
-      imageView.image = toImage
-    }, completion: nil)
+	// MARK: custom methods
 
-    UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
-      self.snowView.alpha = showEffects ? 1.0 : 0.0
-    }, completion: nil)
-  }
+	func changeFlight(to data: FlightData, animated: Bool = false) {
+		// populate the UI with the next flight's data
+		summary.text = data.summary
 
-  func cubeTransition(label: UILabel, text: String, direction: AnimationDirection) {
-    let auxLabel = UILabel(frame: label.frame)
-    auxLabel.text = text
-    auxLabel.font = label.font
-    auxLabel.textAlignment = label.textAlignment
-    auxLabel.textColor = label.textColor
-    auxLabel.backgroundColor = label.backgroundColor
+		if animated {
+			fade(
+				imageView: bgImageView,
+				toImage: UIImage(named: data.weatherImageName)!,
+				showEffects: data.showWeatherEffects
+			)
 
-    let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height/2.0
-    auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
-      .scaledBy(x: 1.0, y: 0.1)
+			let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
 
-    label.superview?.addSubview(auxLabel)
+			cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
+			cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
 
-    UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-      auxLabel.transform = .identity
-        label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
-          .scaledBy(x: 1.0, y: 0.1)
-    }, completion: { _ in
-      label.text = auxLabel.text
-      label.transform = .identity
+			let offsetDeparting = CGPoint(x: CGFloat(direction.rawValue * 80), y: 0.0)
+			moveLabel(label: departingFrom, text: data.departingFrom, offset: offsetDeparting)
 
-      auxLabel.removeFromSuperview()
-    })
-  }
+			let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
+			moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
 
-  func moveLabel(label: UILabel, text: String, offset: CGPoint) {
-    let auxLabel = UILabel(frame: label.frame)
-    auxLabel.text = text
-    auxLabel.font = label.font
-    auxLabel.textAlignment = label.textAlignment
-    auxLabel.textColor = label.textColor
-    auxLabel.backgroundColor = .clear
+			cubeTransition(
+				label: flightStatus,
+				text: data.flightStatus,
+				direction: direction
+			)
 
-    auxLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
-    auxLabel.alpha = 0
-    view.addSubview(auxLabel)
+			planeDepart()
+		} else {
+			bgImageView.image = UIImage(named: data.weatherImageName)
+			snowView.isHidden = !data.showWeatherEffects
 
-    UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
-      label.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
-      label.alpha = 0.0
-    }, completion: nil)
+			flightNr.text = data.flightNr
+			gateNr.text = data.gateNr
+			departingFrom.text = data.departingFrom
+			arrivingTo.text = data.arrivingTo
+			flightStatus.text = data.flightStatus
+		}
 
-    UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
-      auxLabel.transform = .identity
-      auxLabel.alpha = 1.0
-    }, completion: {_ in
-      //clean up
-      auxLabel.removeFromSuperview()
-      label.text = text
-      label.alpha = 1.0
-      label.transform = .identity
-    })
-  }
+		// schedule next flight
+		delay(seconds: 3.0) {
+			self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis, animated: true)
+		}
+	}
 
-  func planeDepart() {
-    let originalCenter = planeImage.center
+	func fade(imageView: UIImageView, toImage: UIImage, showEffects: Bool) {
+		UIView.transition(with: imageView, duration: 1.0, options: .transitionCrossDissolve, animations: {
+			imageView.image = toImage
+		}, completion: nil)
 
-    UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, animations: {
-      //add keyframes
-      UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
-        self.planeImage.center.x += 80.0
-        self.planeImage.center.y -= 10.0
-      })
+		UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+			self.snowView.alpha = showEffects ? 1.0 : 0.0
+		}, completion: nil)
+	}
 
-      UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4) {
-        self.planeImage.transform = CGAffineTransform(rotationAngle: -.pi / 8)
-      }
+	func cubeTransition(label: UILabel, text: String, direction: AnimationDirection) {
+		let auxLabel = UILabel(frame: label.frame)
+		auxLabel.text = text
+		auxLabel.font = label.font
+		auxLabel.textAlignment = label.textAlignment
+		auxLabel.textColor = label.textColor
+		auxLabel.backgroundColor = label.backgroundColor
 
-      UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {
-        self.planeImage.center.x += 100.0
-        self.planeImage.center.y -= 50.0
-        self.planeImage.alpha = 0.0
-      }
+		let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height / 2.0
+		auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
+			.scaledBy(x: 1.0, y: 0.1)
 
-      UIView.addKeyframe(withRelativeStartTime: 0.51, relativeDuration: 0.01) {
-        self.planeImage.transform = .identity
-        self.planeImage.center = CGPoint(x: 0.0, y: originalCenter.y)
-      }
+		label.superview?.addSubview(auxLabel)
 
-      UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.45) {
-        self.planeImage.alpha = 1.0
-        self.planeImage.center = originalCenter
-      }
-    }, completion: nil)
-  }
+		UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+			auxLabel.transform = .identity
+			label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
+				.scaledBy(x: 1.0, y: 0.1)
+		}, completion: { _ in
+			label.text = auxLabel.text
+			label.transform = .identity
+
+			auxLabel.removeFromSuperview()
+		})
+	}
+
+	func moveLabel(label: UILabel, text: String, offset: CGPoint) {
+		let auxLabel = UILabel(frame: label.frame)
+		auxLabel.text = text
+		auxLabel.font = label.font
+		auxLabel.textAlignment = label.textAlignment
+		auxLabel.textColor = label.textColor
+		auxLabel.backgroundColor = .clear
+
+		auxLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+		auxLabel.alpha = 0
+		view.addSubview(auxLabel)
+
+		UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+			label.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+			label.alpha = 0.0
+		}, completion: nil)
+
+		UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
+			auxLabel.transform = .identity
+			auxLabel.alpha = 1.0
+		}, completion: {_ in
+			//clean up
+			auxLabel.removeFromSuperview()
+			label.text = text
+			label.alpha = 1.0
+			label.transform = .identity
+		})
+	}
+
+	func planeDepart() {
+		let originalCenter = planeImage.center
+
+		UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, animations: {
+			//add keyframes
+			UIView.addKeyframe(
+				withRelativeStartTime: 0.0,
+				relativeDuration: 0.25,
+				animations: {
+					self.planeImage.center.x += 80.0
+					self.planeImage.center.y -= 10.0
+				}
+			)
+
+			UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4) {
+				self.planeImage.transform = CGAffineTransform(rotationAngle: -.pi / 8)
+			}
+
+			UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {
+				self.planeImage.center.x += 100.0
+				self.planeImage.center.y -= 50.0
+				self.planeImage.alpha = 0.0
+			}
+
+			UIView.addKeyframe(withRelativeStartTime: 0.51, relativeDuration: 0.01) {
+				self.planeImage.transform = .identity
+				self.planeImage.center = CGPoint(x: 0.0, y: originalCenter.y)
+			}
+
+			UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.45) {
+				self.planeImage.alpha = 1.0
+				self.planeImage.center = originalCenter
+			}
+		}, completion: nil)
+	}
 }
