@@ -1,33 +1,42 @@
-/*
- * Copyright (c) 2014-present Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+/// Copyright (c) 2022-present Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
 
 import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-  
   @IBOutlet weak var meterLabel: UILabel!
   @IBOutlet weak var speakButton: UIButton!
-  
+
   let monitor = MicMonitor()
   let assistant = Assistant()
 
@@ -39,14 +48,15 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     replicator.frame = view.bounds
     view.layer.addSublayer(replicator)
 
     dot.frame = CGRect(
       x: replicator.frame.size.width - dotLength,
       y: replicator.position.y,
-      width: dotLength, height: dotLength)
+      width: dotLength,
+      height: dotLength)
 
     dot.backgroundColor = UIColor.lightGray.cgColor
     dot.borderColor = UIColor(white: 1.0, alpha: 1.0).cgColor
@@ -76,13 +86,12 @@ class ViewController: UIViewController {
 
       self.lastTransformScale = scaleFactor
     }
-
   }
-  
+
   @IBAction func actionEndMonitoring(_ sender: AnyObject) {
     monitor.stopMonitoring()
 
-    //challenges
+    // challenges
     let scale = CABasicAnimation(keyPath: "transform.scale.y")
     scale.fromValue = lastTransformScale
     scale.toValue = 1.0
@@ -99,20 +108,21 @@ class ViewController: UIViewController {
     tint.duration = 1.2
     tint.fillMode = .backwards
     dot.add(tint, forKey: nil)
-    
-    //speak after 1 second
+
+    // speak after 1 second
     delay(seconds: 1.0) {
       self.startSpeaking()
     }
   }
-  
+
   func startSpeaking() {
     print("speak back")
 
-    meterLabel.text = assistant.randomAnswer()
-    assistant.speak(meterLabel.text!, completion: endSpeaking)
+    let answer = assistant.randomAnswer()
+    meterLabel.text = answer
+    assistant.speak(answer, completion: endSpeaking)
     speakButton.isHidden = true
-    
+
     let scale = CABasicAnimation(keyPath: "transform")
     scale.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
     scale.toValue = NSValue(caTransform3D: CATransform3DMakeScale(1.4, 15, 1.0))
@@ -162,7 +172,7 @@ class ViewController: UIViewController {
     rotation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
     replicator.add(rotation, forKey: "replicatorRotation")
   }
-  
+
   func endSpeaking() {
     replicator.removeAllAnimations()
 
