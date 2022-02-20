@@ -29,7 +29,7 @@
 import SwiftUI
 
 @main
-struct testappApp: App {
+struct SavannaToursApp: App {
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
