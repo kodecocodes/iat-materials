@@ -1,34 +1,43 @@
-/*
- * Copyright (c) 2014-present Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+/// Copyright (c) 2022-present Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
 
 import UIKit
 
 class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-
   let duration = 1.0
   var presenting = true
   var originFrame = CGRect.zero
 
-  var dismissCompletion: (()->Void)?
+  var dismissCompletion: (() -> Void)?
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return duration
@@ -36,7 +45,12 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let containerView = transitionContext.containerView
-    let herbView = presenting ? transitionContext.view(forKey: .to)! : transitionContext.view(forKey: .from)!
+    let herbView = presenting ? transitionContext.view(forKey: .to) : transitionContext.view(forKey: .from)
+
+    guard let herbView = herbView else {
+      transitionContext.completeTransition(false)
+      return
+    }
 
     let initialFrame = presenting ? originFrame : herbView.frame
     let finalFrame = presenting ? herbView.frame : originFrame
@@ -67,24 +81,27 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     let herbController = transitionContext.viewController(
       forKey: presenting ? .to : .from
-      ) as! HerbDetailsViewController
+      ) as? HerbDetailsViewController
 
     if presenting {
-      herbController.containerView.alpha = 0.0
+      herbController?.containerView.alpha = 0.0
     }
 
-    UIView.animate(withDuration: duration, delay:0.0, usingSpringWithDamping: 0.4,
-                   initialSpringVelocity: 0.0,
-                   animations: {
-                    herbView.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
-                    herbView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
-                    herbController.containerView.alpha = self.presenting ? 1.0 : 0.0
-                    herbView.layer.cornerRadius = self.presenting ? 0.0 : 20.0/xScaleFactor
-    }, completion: { _ in
-      if !self.presenting {
-        self.dismissCompletion?()
-      }
-      transitionContext.completeTransition(true)
-    })
+    UIView.animate(
+      withDuration: duration,
+      delay: 0.0,
+      usingSpringWithDamping: 0.4,
+      initialSpringVelocity: 0.0,
+      animations: {
+        herbView.transform = self.presenting ? CGAffineTransform.identity : scaleTransform
+        herbView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+        herbController?.containerView.alpha = self.presenting ? 1.0 : 0.0
+        herbView.layer.cornerRadius = self.presenting ? 0.0 : 20.0 / xScaleFactor
+      }, completion: { _ in
+        if !self.presenting {
+          self.dismissCompletion?()
+        }
+        transitionContext.completeTransition(true)
+      })
   }
 }
