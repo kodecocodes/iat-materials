@@ -33,69 +33,74 @@
 import UIKit
 import QuartzCore
 
-class DetailViewController: UITableViewController, UINavigationControllerDelegate {
-  weak var animator: RevealAnimator?
+func delay(seconds: Double, completion: @escaping () -> Void) {
+  DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+}
+
+class MainViewController: UIViewController {
+  let logo = RWLogoLayer.logoLayer()
+  let transition = RevealAnimator()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    title = "Start"
 
-    title = "Pack List"
-    tableView.rowHeight = 54.0
+    UIApplication.shared.delegate?.window??.backgroundColor = .systemBackground
+    navigationController?.delegate = self
   }
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    if let mainVC = navigationController?.viewControllers.first as? MainViewController {
-      animator = mainVC.transition
-    }
-
-    let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan))
+    // add the pan gesture recognizer
+    let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
     view.addGestureRecognizer(pan)
+
+    // add the logo to the view
+    logo.position = CGPoint(
+      x: view.layer.bounds.size.width / 2,
+      y: view.layer.bounds.size.height / 2 - 30)
+    logo.fillColor = UIColor.white.cgColor
+    view.layer.addSublayer(logo)
   }
 
-  @objc func didPan(recognizer: UIPanGestureRecognizer) {
-    guard let animator = animator else { return }
-
-    if recognizer.state == .began {
-      animator.interactive = true
-      navigationController?.popViewController(animated: true)
+  //
+  // MARK: Gesture recognizer handler
+  //
+  @objc func didTap() {
+    performSegue(withIdentifier: "details", sender: nil)
+  }
+  @objc func didPan(_ recognizer: UIPanGestureRecognizer) {
+    switch recognizer.state {
+    case .began:
+      transition.interactive = true
+      performSegue(withIdentifier: "details", sender: nil)
+    default:
+      transition.handlePan(recognizer)
     }
+  }
+}
 
-    animator.handlePan(recognizer)
+extension MainViewController: UINavigationControllerDelegate {
+  func navigationController(
+    _ navigationController: UINavigationController,
+    animationControllerFor
+    operation: UINavigationController.Operation,
+    from fromVC: UIViewController,
+    to toVC: UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
+    transition.operation = operation
+    return transition
   }
 
-  // MARK: Table View methods
-  let packItems = [
-    "Ice cream money",
-    "Great weather",
-    "Beach ball",
-    "Swimsuit for him",
-    "Swimsuit for her",
-    "Beach games",
-    "Ironing board",
-    "Cocktail mood",
-    "Sunglasses",
-    "Flip flops"
-  ]
-
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+func navigationController(
+  _ navigationController: UINavigationController,
+  interactionControllerFor
+  animationController: UIViewControllerAnimatedTransitioning
+) -> UIViewControllerInteractiveTransitioning? {
+  if !transition.interactive {
+    return nil
   }
-
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
-  }
-
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-    cell.accessoryType = .none
-    cell.textLabel?.text = packItems[(indexPath as NSIndexPath).row]
-    cell.imageView?.image = UIImage(named: "summericons_100px_0\((indexPath as NSIndexPath).row).png")
-    return cell
-  }
-
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-  }
+  return transition
+}
 }
