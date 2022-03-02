@@ -112,9 +112,9 @@ class ContainerViewController: UIViewController {
           self.setMenu(toPercent: targetProgress)
         },
         completion: {_ in
+          self.menuViewController.view.layer.shouldRasterize = false
         }
       )
-      self.menuViewController.view.layer.shouldRasterize = false
 
     default: break
     }

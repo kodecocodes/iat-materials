@@ -42,6 +42,7 @@ class CenterViewController: UIViewController {
   }
 
   @IBOutlet var symbol: UILabel!
+  var menuButton: MenuButton?
 
   // MARK: ViewController
 
@@ -54,6 +55,7 @@ class CenterViewController: UIViewController {
         containerVC.toggleSideMenu()
       }
     }
+    self.menuButton = menuButton
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
     menuItem = MenuItem.sharedItems[0]
   }
