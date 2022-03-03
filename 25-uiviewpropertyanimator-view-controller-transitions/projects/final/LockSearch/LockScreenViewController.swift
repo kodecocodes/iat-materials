@@ -240,7 +240,7 @@ extension LockScreenViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.row == 1 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "Footer", for: indexPath)
-      (cell as? FooterCell)?.didPressEdit = {[unowned self] in
+      (cell as? FooterCell)?.didPressEdit = { [unowned self] in
         self.presentTransition.wantsInteractiveStart = false
         self.presentSettings()
       }
