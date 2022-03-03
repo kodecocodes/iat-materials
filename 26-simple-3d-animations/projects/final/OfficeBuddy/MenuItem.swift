@@ -49,8 +49,8 @@ class MenuItem {
 
   init(symbol: String, color: UIColor, title: String) {
     self.symbol = symbol
-    self.color  = color
-    self.title  = title
+    self.color = color
+    self.title = title
   }
 
   static let sharedItems: [MenuItem] = [
