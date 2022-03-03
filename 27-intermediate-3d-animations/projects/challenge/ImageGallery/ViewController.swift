@@ -99,7 +99,7 @@ class ViewController: UIViewController {
           animations: {
             image.layer.transform = CATransform3DIdentity
           },
-          completion: {_ in
+          completion: { _ in
             self.view.bringSubviewToFront(image)
           })
       } else {
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
           animations: {
             image.alpha = 0.0
           },
-          completion: {_ in
+          completion: { _ in
             image.alpha = 1.0
             image.layer.transform = CATransform3DIdentity
           })

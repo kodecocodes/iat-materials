@@ -103,7 +103,7 @@ class RefreshView: UIView, UIScrollViewDelegate {
       animations: {
         self.scrollView.contentInset.top = 0
       },
-      completion: {_ in
+      completion: { _ in
         // finished
       })
   }

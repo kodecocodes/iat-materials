@@ -41,7 +41,7 @@ enum AnimatorFactory {
     scale.addAnimations({
       view.transform = CGAffineTransform.identity
     }, delayFactor: 0.33)
-    scale.addCompletion {_ in
+    scale.addCompletion { _ in
       print("ready")
     }
     return scale
