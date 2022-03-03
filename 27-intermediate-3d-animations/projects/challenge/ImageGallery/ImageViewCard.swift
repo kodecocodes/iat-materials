@@ -33,7 +33,7 @@
 import UIKit
 
 class ImageViewCard: UIImageView {
-  var title: String = ""
+  var title = ""
   var didSelect: ((ImageViewCard) -> Void)?
 
   convenience init(imageNamed: String, title name: String) {
