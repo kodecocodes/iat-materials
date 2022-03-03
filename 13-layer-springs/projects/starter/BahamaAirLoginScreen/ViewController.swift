@@ -247,19 +247,20 @@ class ViewController: UIViewController {
   }
 
   func resetForm() {
-    UIView.transition(
+		UIView.transition(
 			with: status,
 			duration: 0.2,
 			options: .transitionFlipFromTop,
-      animations: {
-        self.status.isHidden = true
-        self.status.center = self.statusPosition
-      },
-      completion: { _ in
-        let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
-        tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
-        roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
-    })
+			animations: {
+				self.status.isHidden = true
+				self.status.center = self.statusPosition
+			},
+			completion: { _ in
+				let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+				tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
+				roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
+			}
+		)
 
     UIView.animate(
 			withDuration: 0.2,

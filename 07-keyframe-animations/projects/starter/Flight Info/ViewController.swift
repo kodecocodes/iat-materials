@@ -60,7 +60,7 @@ class ViewController: UIViewController {
   @IBOutlet var flightStatus: UILabel!
   @IBOutlet var statusBanner: UIImageView!
 
-  var snowView: SnowView!
+  let snowView = SnowView(frame: CGRect(x: -150, y:-100, width: 300, height: 50))
 
   //MARK: view controller methods
 
@@ -72,7 +72,6 @@ class ViewController: UIViewController {
     summaryIcon.center.y = summary.frame.size.height/2
 
     //add the snow effect layer
-    snowView = SnowView(frame: CGRect(x: -150, y:-100, width: 300, height: 50))
     let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
     snowClipView.clipsToBounds = true
     snowClipView.addSubview(snowView)

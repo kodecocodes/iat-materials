@@ -79,15 +79,15 @@ struct SpinnerView: View {
 				.blur(radius: currentOffset == .zero ? 0 : 10)
 				.gesture(
 					DragGesture()
-						.onChanged({ gesture in
+						.onChanged { gesture in
 							self.currentOffset = gesture.translation
-						})
-						.onEnded({ _ in
+						}
+						.onEnded { _ in
 							if self.currentOffset.height > 150 {
 								self.complete()
 							}
 							self.currentOffset = .zero
-						})
+						}
 				)
 				.animation(.easeInOut(duration: 1.0), value: currentOffset)
 				.transition(shootUp)

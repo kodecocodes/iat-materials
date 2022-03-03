@@ -37,13 +37,16 @@ class SnowView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    let emitter = layer as! CAEmitterLayer
+    guard
+			let emitter = layer as? CAEmitterLayer,
+			let image = UIImage(named: "flake.png")?.cgImage else { return }
+
     emitter.emitterPosition = CGPoint(x: bounds.size.width / 2, y: 0)
     emitter.emitterSize = bounds.size
     emitter.emitterShape = .rectangle
 
     let emitterCell = CAEmitterCell()
-    emitterCell.contents = UIImage(named: "flake.png")!.cgImage
+    emitterCell.contents = image
     emitterCell.birthRate = 200
     emitterCell.lifetime = 3.5
     emitterCell.color = UIColor.white.cgColor

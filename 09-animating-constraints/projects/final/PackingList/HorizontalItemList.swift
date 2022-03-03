@@ -72,9 +72,10 @@ class HorizontalItemList: UIScrollView {
     contentSize = CGSize(width: padding * buttonWidth, height: buttonWidth + 2 * padding)
   }
 
-  @objc func didTapImage(_ tap: UITapGestureRecognizer) {
-    didSelectItem?(tap.view!.tag)
-  }
+	@objc func didTapImage(_ tap: UITapGestureRecognizer) {
+		guard let view = tap.view else { return }
+		didSelectItem?(view.tag)
+	}
 
   override func didMoveToSuperview() {
     super.didMoveToSuperview()

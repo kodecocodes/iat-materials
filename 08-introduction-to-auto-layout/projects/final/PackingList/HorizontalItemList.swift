@@ -72,7 +72,8 @@ class HorizontalItemList: UIScrollView {
 	}
 
 	@objc func didTapImage(_ tap: UITapGestureRecognizer) {
-		didSelectItem?(tap.view!.tag)
+		guard let view = tap.view else { return }
+		didSelectItem?(view.tag)
 	}
 
 	override func didMoveToSuperview() {

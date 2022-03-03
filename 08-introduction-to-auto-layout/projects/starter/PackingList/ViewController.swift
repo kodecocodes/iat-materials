@@ -41,13 +41,16 @@ class ViewController: UIViewController {
 
 	// MARK: further class variables
 
-	var slider: HorizontalItemList!
+	var slider: HorizontalItemList?
 	var isMenuOpen = false
 	var items: [Int] = [5, 6, 7]
 
 	// MARK: class methods
 
 	@IBAction func actionToggleMenu(_ sender: AnyObject) {
+		guard
+			let titleLabel = titleLabel,
+			let titleSuperview = titleLabel.superview else { return }
 	}
 
 	func showItem(_ index: Int) {

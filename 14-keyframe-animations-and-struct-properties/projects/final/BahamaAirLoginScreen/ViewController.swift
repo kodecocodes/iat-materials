@@ -250,18 +250,18 @@ class ViewController: UIViewController {
   }
 
   func resetForm() {
-    UIView.transition(
+		UIView.transition(
 			with: status,
 			duration: 0.2,
 			options: .transitionFlipFromTop,
-      animations: {
-        self.status.isHidden = true
-        self.status.center = self.statusPosition
-      },
-      completion: { _ in
-        let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
-        tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
-        roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
+			animations: {
+				self.status.isHidden = true
+				self.status.center = self.statusPosition
+			},
+			completion: { _ in
+				let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+				tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
+				roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
 			}
 		)
 
@@ -321,7 +321,7 @@ class ViewController: UIViewController {
     roundCorners(layer: loginButton.layer, toRadius: 25.0)
 
     let balloon = CALayer()
-    balloon.contents = UIImage(named: "balloon")!.cgImage
+    balloon.contents = UIImage(named: "balloon")?.cgImage
     balloon.frame = CGRect(x: -50.0, y: 0.0, width: 50.0, height: 65.0)
     view.layer.insertSublayer(balloon, below: username.layer)
 

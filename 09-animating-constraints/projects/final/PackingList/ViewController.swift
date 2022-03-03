@@ -42,13 +42,17 @@ class ViewController: UIViewController {
 
 	// MARK: further class variables
 
-	var slider: HorizontalItemList!
+	var slider: HorizontalItemList?
 	var isMenuOpen = false
 	var items: [Int] = [5, 6, 7]
 
 	// MARK: class methods
 
 	@IBAction func actionToggleMenu(_ sender: AnyObject) {
+		guard
+			let titleLabel = titleLabel,
+			let titleSuperview = titleLabel.superview else { return }
+
 		titleLabel.superview?.constraints.forEach { constraint in
 			print(" -> \(constraint.description)\n")
 		}
@@ -63,10 +67,10 @@ class ViewController: UIViewController {
 			if constraint.identifier == "TitleCenterY" {
 				constraint.isActive = false
 				let newConstraint = NSLayoutConstraint(
-					item: titleLabel!,
+					item: titleLabel,
 					attribute: .centerY,
 					relatedBy: .equal,
-					toItem: titleLabel.superview!,
+					toItem: titleSuperview,
 					attribute: .centerY,
 					multiplier: isMenuOpen ? 0.67 : 1.0,
 					constant: 0)
@@ -94,15 +98,17 @@ class ViewController: UIViewController {
 
 		if isMenuOpen {
 			slider = HorizontalItemList(inView: view)
-			slider.didSelectItem = {index in
+			slider?.didSelectItem = {index in
 				print("add \(index)")
 				self.items.append(index)
 				self.tableView.reloadData()
 				self.actionToggleMenu(self)
 			}
-			self.titleLabel.superview!.addSubview(slider)
+			if let superview = titleLabel.superview, let slider = slider {
+				superview.addSubview(slider)
+			}
 		} else {
-			slider.removeFromSuperview()
+			slider?.removeFromSuperview()
 		}
 	}
 
