@@ -87,10 +87,10 @@ class ViewController: UIViewController {
 
     if animated {
       fade(
-				imageView: bgImageView,
-				toImage: UIImage(named: data.weatherImageName)!,
-				showEffects: data.showWeatherEffects
-			)
+        imageView: bgImageView,
+        toImage: UIImage(named: data.weatherImageName)!,
+        showEffects: data.showWeatherEffects
+      )
 
       let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
 
@@ -104,10 +104,10 @@ class ViewController: UIViewController {
       moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
 
       cubeTransition(
-				label: flightStatus,
-				text: data.flightStatus,
-				direction: direction
-			)
+        label: flightStatus,
+        text: data.flightStatus,
+        direction: direction
+      )
     } else {
       bgImageView.image = UIImage(named: data.weatherImageName)
       snowView.isHidden = !data.showWeatherEffects
@@ -145,14 +145,14 @@ class ViewController: UIViewController {
 
     let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height / 2.0
     auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
-			.scaledBy(x: 1.0, y: 0.1)
+      .scaledBy(x: 1.0, y: 0.1)
 
     label.superview?.addSubview(auxLabel)
 
     UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
       auxLabel.transform = .identity
-        label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
-          .scaledBy(x: 1.0, y: 0.1)
+      label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
+        .scaledBy(x: 1.0, y: 0.1)
     }, completion: { _ in
       label.text = auxLabel.text
       label.transform = .identity
@@ -182,7 +182,7 @@ class ViewController: UIViewController {
       auxLabel.transform = .identity
       auxLabel.alpha = 1.0
     }, completion: {_ in
-      //clean up
+      // clean up
       auxLabel.removeFromSuperview()
       label.text = text
       label.alpha = 1.0

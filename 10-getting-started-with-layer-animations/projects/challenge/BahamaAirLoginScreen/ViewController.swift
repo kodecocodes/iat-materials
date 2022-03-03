@@ -148,9 +148,9 @@ class ViewController: UIViewController {
     cloud4.layer.add(fadeIn, forKey: nil)
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 0.5,
-			usingSpringWithDamping: 0.5,
+      withDuration: 0.5,
+      delay: 0.5,
+      usingSpringWithDamping: 0.5,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y -= 30.0
@@ -169,8 +169,8 @@ class ViewController: UIViewController {
     label.text = messages[index]
 
     UIView.transition(
-			with: status,
-			duration: 0.33,
+      with: status,
+      duration: 0.33,
       options: [.curveEaseOut, .transitionFlipFromBottom],
       animations: {
         self.status.isHidden = false
@@ -191,8 +191,8 @@ class ViewController: UIViewController {
 
   func removeMessage(index: Int) {
     UIView.animate(
-			withDuration: 0.33,
-			delay: 0.0,
+      withDuration: 0.33,
+      delay: 0.0,
       animations: {
         self.status.center.x += self.view.frame.size.width
       },
@@ -207,23 +207,23 @@ class ViewController: UIViewController {
 
   func resetForm() {
     UIView.transition(
-			with: status,
-			duration: 0.2,
-			options: .transitionFlipFromTop,
+      with: status,
+      duration: 0.2,
+      options: .transitionFlipFromTop,
       animations: {
         self.status.isHidden = true
         self.status.center = self.statusPosition
       },
-			completion: { _ in
-				let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
-				tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
-				roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
-			}
-		)
+      completion: { _ in
+        let tintColor = UIColor(red: 0.63, green: 0.84, blue: 0.35, alpha: 1.0)
+        tintBackgroundColor(layer: self.loginButton.layer, toColor: tintColor)
+        roundCorners(layer: self.loginButton.layer, toRadius: 10.0)
+      }
+    )
 
     UIView.animate(
-			withDuration: 0.2,
-			delay: 0.0,
+      withDuration: 0.2,
+      delay: 0.0,
       animations: {
         self.spinner.center = CGPoint(x: -20.0, y: 16.0)
         self.spinner.alpha = 0.0
@@ -240,9 +240,9 @@ class ViewController: UIViewController {
     view.endEditing(true)
 
     UIView.animate(
-			withDuration: 1.5,
-			delay: 0.0,
-			usingSpringWithDamping: 0.2,
+      withDuration: 1.5,
+      delay: 0.0,
+      usingSpringWithDamping: 0.2,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.bounds.size.width += 80.0
@@ -253,9 +253,9 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.33,
-			delay: 0.0,
-			usingSpringWithDamping: 0.7,
+      withDuration: 0.33,
+      delay: 0.0,
+      usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y += 60.0
@@ -274,9 +274,9 @@ class ViewController: UIViewController {
     let cloudSpeed = 60.0 / view.frame.size.width
     let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
     UIView.animate(
-			withDuration: TimeInterval(duration),
-			delay: 0.0,
-			options: .curveLinear,
+      withDuration: TimeInterval(duration),
+      delay: 0.0,
+      options: .curveLinear,
       animations: {
         cloud.frame.origin.x = self.view.frame.size.width
       },

@@ -43,7 +43,9 @@
 				9C7090611A12023F0075390C /* PackingList */,
 				9C7090601A12023F0075390C /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C7090601A12023F0075390C /* Products */ = {
 			isa = PBXGroup;

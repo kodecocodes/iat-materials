@@ -41,7 +41,9 @@
 				9C4C8BFC22C0CE8800BFCF2E /* Spinner */,
 				9C4C8BFB22C0CE8800BFCF2E /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C4C8BFB22C0CE8800BFCF2E /* Products */ = {
 			isa = PBXGroup;

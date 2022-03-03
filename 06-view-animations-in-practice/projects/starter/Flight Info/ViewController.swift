@@ -35,61 +35,61 @@ import QuartzCore
 
 // A delay function
 func delay(seconds: Double, completion: @escaping () -> Void) {
-	DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+  DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
 class ViewController: UIViewController {
-	@IBOutlet var bgImageView: UIImageView!
+  @IBOutlet var bgImageView: UIImageView!
 
-	@IBOutlet var summaryIcon: UIImageView!
-	@IBOutlet var summary: UILabel!
+  @IBOutlet var summaryIcon: UIImageView!
+  @IBOutlet var summary: UILabel!
 
-	@IBOutlet var flightNr: UILabel!
-	@IBOutlet var gateNr: UILabel!
-	@IBOutlet var departingFrom: UILabel!
-	@IBOutlet var arrivingTo: UILabel!
-	@IBOutlet var planeImage: UIImageView!
+  @IBOutlet var flightNr: UILabel!
+  @IBOutlet var gateNr: UILabel!
+  @IBOutlet var departingFrom: UILabel!
+  @IBOutlet var arrivingTo: UILabel!
+  @IBOutlet var planeImage: UIImageView!
 
-	@IBOutlet var flightStatus: UILabel!
-	@IBOutlet var statusBanner: UIImageView!
+  @IBOutlet var flightStatus: UILabel!
+  @IBOutlet var statusBanner: UIImageView!
 
-	let snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
+  let snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
 
-	// MARK: view controller methods
+  // MARK: view controller methods
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-		//adjust ui
-		summary.addSubview(summaryIcon)
-		summaryIcon.center.y = summary.frame.size.height / 2
+    //adjust ui
+    summary.addSubview(summaryIcon)
+    summaryIcon.center.y = summary.frame.size.height / 2
 
-		//add the snow effect layer
-		let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
-		snowClipView.clipsToBounds = true
-		snowClipView.addSubview(snowView)
-		view.addSubview(snowClipView)
+    //add the snow effect layer
+    let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
+    snowClipView.clipsToBounds = true
+    snowClipView.addSubview(snowView)
+    view.addSubview(snowClipView)
 
-		//start rotating the flights
-		changeFlight(to: londonToParis)
-	}
+    //start rotating the flights
+    changeFlight(to: londonToParis)
+  }
 
-	// MARK: custom methods
+  // MARK: custom methods
 
-	func changeFlight(to data: FlightData) {
-		// populate the UI with the next flight's data
-		summary.text = data.summary
-		flightNr.text = data.flightNr
-		gateNr.text = data.gateNr
-		departingFrom.text = data.departingFrom
-		arrivingTo.text = data.arrivingTo
-		flightStatus.text = data.flightStatus
-		bgImageView.image = UIImage(named: data.weatherImageName)
-		snowView.isHidden = !data.showWeatherEffects
+  func changeFlight(to data: FlightData) {
+    // populate the UI with the next flight's data
+    summary.text = data.summary
+    flightNr.text = data.flightNr
+    gateNr.text = data.gateNr
+    departingFrom.text = data.departingFrom
+    arrivingTo.text = data.arrivingTo
+    flightStatus.text = data.flightStatus
+    bgImageView.image = UIImage(named: data.weatherImageName)
+    snowView.isHidden = !data.showWeatherEffects
 
-		// schedule next flight
-		delay(seconds: 3.0) {
-			self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis)
-		}
-	}
+    // schedule next flight
+    delay(seconds: 3.0) {
+      self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis)
+    }
+  }
 }

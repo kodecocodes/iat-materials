@@ -34,9 +34,9 @@ import SwiftUI
 
 @main
 struct SavannaToursApp: App {
-	var body: some Scene {
-		WindowGroup {
-			StarterView()
-		}
-	}
+  var body: some Scene {
+    WindowGroup {
+      StarterView()
+    }
+  }
 }

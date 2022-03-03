@@ -58,7 +58,7 @@ class ViewController: UIViewController {
   @IBOutlet var flightStatus: UILabel!
   @IBOutlet var statusBanner: UIImageView!
 
-	let snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
+  let snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
 
   // MARK: view controller methods
 
@@ -85,10 +85,10 @@ class ViewController: UIViewController {
     // populate the UI with the next flight's data
     if animated {
       fade(
-				imageView: bgImageView,
-				toImage: UIImage(named: data.weatherImageName)!,
-				showEffects: data.showWeatherEffects
-			)
+        imageView: bgImageView,
+        toImage: UIImage(named: data.weatherImageName)!,
+        showEffects: data.showWeatherEffects
+      )
 
       let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
 
@@ -102,10 +102,10 @@ class ViewController: UIViewController {
       moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
 
       cubeTransition(
-				label: flightStatus,
-				text: data.flightStatus,
-				direction: direction
-			)
+        label: flightStatus,
+        text: data.flightStatus,
+        direction: direction
+      )
 
       planeDepart()
       summarySwitch(to: data.summary)
@@ -198,13 +198,13 @@ class ViewController: UIViewController {
 
     UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, animations: {
       //add keyframes
-			UIView.addKeyframe(
-				withRelativeStartTime: 0.0,
-				relativeDuration: 0.25
-			) {
-				self.planeImage.center.x += 80.0
-				self.planeImage.center.y -= 10.0
-			}
+      UIView.addKeyframe(
+        withRelativeStartTime: 0.0,
+        relativeDuration: 0.25
+      ) {
+        self.planeImage.center.x += 80.0
+        self.planeImage.center.y -= 10.0
+      }
 
       UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4) {
         self.planeImage.transform = CGAffineTransform(rotationAngle: -.pi / 8)

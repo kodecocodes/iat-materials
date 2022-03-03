@@ -45,7 +45,9 @@
 				9C485DA01A1CCBE1004A6132 /* Flight Info */,
 				9C485D9F1A1CCBE1004A6132 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C485D9F1A1CCBE1004A6132 /* Products */ = {
 			isa = PBXGroup;

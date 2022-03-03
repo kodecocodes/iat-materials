@@ -70,11 +70,11 @@ class HorizontalItemList: UIScrollView {
 
     contentSize = CGSize(width: padding * buttonWidth, height: buttonWidth + 2 * padding)
   }
-
-	@objc func didTapImage(_ tap: UITapGestureRecognizer) {
-		guard let view = tap.view else { return }
-		didSelectItem?(view.tag)
-	}
+  
+  @objc func didTapImage(_ tap: UITapGestureRecognizer) {
+    guard let view = tap.view else { return }
+    didSelectItem?(view.tag)
+  }
 
   override func didMoveToSuperview() {
     super.didMoveToSuperview()
@@ -84,11 +84,11 @@ class HorizontalItemList: UIScrollView {
     }
 
     UIView.animate(
-			withDuration: 1.0,
-			delay: 0.01,
-			usingSpringWithDamping: 0.5,
+      withDuration: 1.0,
+      delay: 0.01,
+      usingSpringWithDamping: 0.5,
       initialSpringVelocity: 10.0,
-			options: .curveEaseIn,
+      options: .curveEaseIn,
       animations: {
         self.alpha = 1.0
         self.center.x -= self.frame.size.width

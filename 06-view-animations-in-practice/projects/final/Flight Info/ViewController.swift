@@ -88,10 +88,10 @@ class ViewController: UIViewController {
 
     if animated {
       fade(
-				imageView: bgImageView,
-				toImage: UIImage(named: data.weatherImageName)!,
-				showEffects: data.showWeatherEffects
-			)
+        imageView: bgImageView,
+        toImage: UIImage(named: data.weatherImageName)!,
+        showEffects: data.showWeatherEffects
+      )
 
       let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
 

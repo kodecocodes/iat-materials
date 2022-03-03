@@ -41,7 +41,9 @@
 				9C4319651A0C32D80085829B /* BahamaAirLoginScreen */,
 				9C4319641A0C32D80085829B /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C4319641A0C32D80085829B /* Products */ = {
 			isa = PBXGroup;

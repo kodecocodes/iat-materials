@@ -119,8 +119,8 @@ class ViewController: UIViewController {
     super.viewDidAppear(animated)
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 0.5,
+      withDuration: 0.5,
+      delay: 0.5,
       animations: {
         self.cloud1.alpha = 1.0
       },
@@ -128,8 +128,8 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 0.7,
+      withDuration: 0.5,
+      delay: 0.7,
       animations: {
         self.cloud2.alpha = 1.0
       },
@@ -137,8 +137,8 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 0.9,
+      withDuration: 0.5,
+      delay: 0.9,
       animations: {
         self.cloud3.alpha = 1.0
       },
@@ -146,8 +146,8 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 1.1,
+      withDuration: 0.5,
+      delay: 1.1,
       animations: {
         self.cloud4.alpha = 1.0
       },
@@ -155,9 +155,9 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.5,
-			delay: 0.5,
-			usingSpringWithDamping: 0.5,
+      withDuration: 0.5,
+      delay: 0.5,
+      usingSpringWithDamping: 0.5,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y -= 30.0
@@ -176,14 +176,14 @@ class ViewController: UIViewController {
     label.text = messages[index]
 
     UIView.transition(
-			with: status,
-			duration: 0.33,
+      with: status,
+      duration: 0.33,
       options: [.curveEaseOut, .transitionFlipFromBottom],
       animations: {
         self.status.isHidden = false
       },
       completion: {_ in
-        //transition completion
+        // transition completion
         delay(seconds: 2.0) {
           if index < self.messages.count - 1 {
             self.removeMessage(index: index)
@@ -198,8 +198,8 @@ class ViewController: UIViewController {
 
   func removeMessage(index: Int) {
     UIView.animate(
-			withDuration: 0.33,
-			delay: 0.0,
+      withDuration: 0.33,
+      delay: 0.0,
       animations: {
         self.status.center.x += self.view.frame.size.width
       },
@@ -214,9 +214,9 @@ class ViewController: UIViewController {
 
   func resetForm() {
     UIView.transition(
-			with: status,
-			duration: 0.2,
-			options: .transitionFlipFromTop,
+      with: status,
+      duration: 0.2,
+      options: .transitionFlipFromTop,
       animations: {
         self.status.isHidden = true
         self.status.center = self.statusPosition
@@ -225,8 +225,8 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.2,
-			delay: 0.0,
+      withDuration: 0.2,
+      delay: 0.0,
       animations: {
         self.spinner.center = CGPoint(x: -20.0, y: 16.0)
         self.spinner.alpha = 0.0
@@ -244,9 +244,9 @@ class ViewController: UIViewController {
     view.endEditing(true)
 
     UIView.animate(
-			withDuration: 1.5,
-			delay: 0.0,
-			usingSpringWithDamping: 0.2,
+      withDuration: 1.5,
+      delay: 0.0,
+      usingSpringWithDamping: 0.2,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.bounds.size.width += 80.0
@@ -257,9 +257,9 @@ class ViewController: UIViewController {
     )
 
     UIView.animate(
-			withDuration: 0.33,
-			delay: 0.0,
-			usingSpringWithDamping: 0.7,
+      withDuration: 0.33,
+      delay: 0.0,
+      usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.0,
       animations: {
         self.loginButton.center.y += 60.0
@@ -275,9 +275,9 @@ class ViewController: UIViewController {
     let cloudSpeed = 60.0 / view.frame.size.width
     let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
     UIView.animate(
-			withDuration: TimeInterval(duration),
-			delay: 0.0,
-			options: .curveLinear,
+      withDuration: TimeInterval(duration),
+      delay: 0.0,
+      options: .curveLinear,
       animations: {
         cloud.frame.origin.x = self.view.frame.size.width
       },
@@ -294,5 +294,5 @@ class ViewController: UIViewController {
     let nextField = (textField === username) ? password : username
     nextField?.becomeFirstResponder()
     return true
-	}
+  }
 }
