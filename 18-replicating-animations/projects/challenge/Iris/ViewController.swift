@@ -155,7 +155,7 @@ class ViewController: UIViewController {
 
     let initialRotation = CABasicAnimation(keyPath: "instanceTransform.rotation")
     initialRotation.fromValue = 0.0
-    initialRotation.toValue   = 0.01
+    initialRotation.toValue = 0.01
     initialRotation.duration = 0.33
     initialRotation.isRemovedOnCompletion = false
     initialRotation.fillMode = .forwards
