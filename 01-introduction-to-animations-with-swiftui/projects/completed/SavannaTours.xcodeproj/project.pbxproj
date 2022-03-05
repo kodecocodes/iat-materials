@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C3E555E27BD58EB00437455 /* SavannaToursApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E555D27BD58EB00437455 /* SavannaToursApp.swift */; };
 		9C9C8C8822BA3D96008975F4 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C8C8722BA3D96008975F4 /* Delay.swift */; };
 		9CD4824922BA1E5500EE1855 /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4824822BA1E5500EE1855 /* StarterView.swift */; };
-		9CEFEFE322B98EB100B223AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFEFE222B98EB100B223AC /* AppDelegate.swift */; };
-		9CEFEFE522B98EB100B223AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFEFE422B98EB100B223AC /* SceneDelegate.swift */; };
 		9CEFEFE722B98EB100B223AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFEFE622B98EB100B223AC /* ContentView.swift */; };
 		9CEFEFE922B98EB300B223AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CEFEFE822B98EB300B223AC /* Assets.xcassets */; };
 		9CEFEFFA22B98F8900B223AC /* MilestonesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFEFF822B98F8900B223AC /* MilestonesList.swift */; };
@@ -21,11 +20,10 @@
 
 /* Begin PBXFileReference section */
 		9C284B8822B99CEE002BF467 /* Credits.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Credits.md; sourceTree = "<group>"; };
+		9C3E555D27BD58EB00437455 /* SavannaToursApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavannaToursApp.swift; sourceTree = "<group>"; };
 		9C9C8C8722BA3D96008975F4 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		9CD4824822BA1E5500EE1855 /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		9CEFEFDF22B98EB100B223AC /* SavannaTours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SavannaTours.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CEFEFE222B98EB100B223AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9CEFEFE422B98EB100B223AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CEFEFE622B98EB100B223AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9CEFEFE822B98EB300B223AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CEFEFF022B98EB300B223AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +61,9 @@
 				9CEFEFE122B98EB100B223AC /* SavannaTours */,
 				9CEFEFE022B98EB100B223AC /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9CEFEFE022B98EB100B223AC /* Products */ = {
 			isa = PBXGroup;
@@ -76,6 +76,7 @@
 		9CEFEFE122B98EB100B223AC /* SavannaTours */ = {
 			isa = PBXGroup;
 			children = (
+				9C3E555D27BD58EB00437455 /* SavannaToursApp.swift */,
 				9CEFEFF622B98F2100B223AC /* Assets */,
 				9CEFEFF722B98F7A00B223AC /* Views */,
 				9CEFEFF022B98EB300B223AC /* Info.plist */,
@@ -88,8 +89,6 @@
 			children = (
 				9CEFEFFE22B9937700B223AC /* Launch Screen.storyboard */,
 				9CEFEFE822B98EB300B223AC /* Assets.xcassets */,
-				9CEFEFE222B98EB100B223AC /* AppDelegate.swift */,
-				9CEFEFE422B98EB100B223AC /* SceneDelegate.swift */,
 				9C9C8C8722BA3D96008975F4 /* Delay.swift */,
 			);
 			path = Assets;
@@ -115,6 +114,7 @@
 				9CEFEFDB22B98EB100B223AC /* Sources */,
 				9CEFEFDC22B98EB100B223AC /* Frameworks */,
 				9CEFEFDD22B98EB100B223AC /* Resources */,
+				9CA2B08127C24A0F00B569F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,7 +132,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Razeware LLC";
 				TargetAttributes = {
 					9CEFEFDE22B98EB100B223AC = {
@@ -170,16 +170,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9CA2B08127C24A0F00B569F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9CEFEFDB22B98EB100B223AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9CD4824922BA1E5500EE1855 /* StarterView.swift in Sources */,
-				9CEFEFE322B98EB100B223AC /* AppDelegate.swift in Sources */,
 				9CEFEFFB22B98F8900B223AC /* HeroImage.swift in Sources */,
-				9CEFEFE522B98EB100B223AC /* SceneDelegate.swift in Sources */,
 				9CEFEFFA22B98F8900B223AC /* MilestonesList.swift in Sources */,
+				9C3E555E27BD58EB00437455 /* SavannaToursApp.swift in Sources */,
 				9C9C8C8822BA3D96008975F4 /* Delay.swift in Sources */,
 				9CEFEFFD22B990B400B223AC /* TourTitle.swift in Sources */,
 				9CEFEFE722B98EB100B223AC /* ContentView.swift in Sources */,
@@ -215,6 +234,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -275,6 +295,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -311,6 +332,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SavannaTours/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,6 +352,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SavannaTours/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

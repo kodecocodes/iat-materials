@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2022-present Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,50 +33,52 @@
 import SwiftUI
 
 struct StarterView: View {
-    @State var currentOffset = 0
-    @State var color = Color.red
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .scaleEffect(0.5)
-                .foregroundColor(colors[currentOffset])
-                .animation(.default)
-                .offset(x: offsets[currentOffset].x,
-                        y: offsets[currentOffset].y)
-        }
-        .onAppear {
-            for index in 1..<offsets.count {
-                delay(seconds: Double(index)) {
-                    self.currentOffset = index
-                }
-            }
-        }
+  @State var currentOffset = 0
+  @State var color = Color.red
+  
+  var body: some View {
+    ZStack {
+      Circle()
+        .scaleEffect(0.5)
+        .foregroundColor(colors[currentOffset])
+        .animation(.default, value: currentOffset)
+        .offset(
+          x: offsets[currentOffset].x,
+          y: offsets[currentOffset].y
+        )
     }
+    .onAppear {
+      for index in 1..<offsets.count {
+        delay(seconds: Double(index)) {
+          self.currentOffset = index
+        }
+      }
+    }
+  }
 }
 
 #if DEBUG
-struct StarterView_Previews : PreviewProvider {
-    static var previews: some View {
-        StarterView()
-    }
+struct StarterView_Previews: PreviewProvider {
+  static var previews: some View {
+    StarterView()
+  }
 }
 #endif
 
 let offsets: [CGPoint] = [
-    CGPoint(x: 0, y: 0),
-    CGPoint(x: 100, y: 0),
-    CGPoint(x: 100, y: -100),
-    CGPoint(x: -100, y: -100),
-    CGPoint(x: -100, y: 0),
-    CGPoint(x: 0, y: 0),
+  CGPoint(x: 0, y: 0),
+  CGPoint(x: 100, y: 0),
+  CGPoint(x: 100, y: -100),
+  CGPoint(x: -100, y: -100),
+  CGPoint(x: -100, y: 0),
+  CGPoint(x: 0, y: 0)
 ]
 
 let colors: [Color] = [
-    Color.green,
-    Color.blue,
-    Color.red,
-    Color.orange,
-    Color.yellow,
-    Color.green
+  Color.green,
+  Color.blue,
+  Color.red,
+  Color.orange,
+  Color.yellow,
+  Color.green
 ]
