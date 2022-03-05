@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2022-present Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,9 +40,9 @@ struct SpinnerView: View {
         .frame(width: 20, height: 50)
     }
   }
-  
+
   let leavesCount = 12
-  
+
   var body: some View {
     VStack {
       ZStack {
@@ -47,14 +51,13 @@ struct SpinnerView: View {
       .onAppear(perform: animate)
     }
   }
-  
+
   func animate() {
-    
   }
 }
 
 #if DEBUG
-struct SpinnerView_Previews : PreviewProvider {
+struct SpinnerView_Previews: PreviewProvider {
   static var previews: some View {
     SpinnerView()
   }

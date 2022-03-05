@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C4C8BFE22C0CE8800BFCF2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */; };
-		9C4C8C0022C0CE8800BFCF2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */; };
+		9C2A37D527BDA38300F2D539 /* SpinnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */; };
 		9C4C8C0422C0CE8900BFCF2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */; };
 		9C4C8C0A22C0CE8900BFCF2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4C8C0822C0CE8900BFCF2E /* LaunchScreen.storyboard */; };
 		9C8A525122C0CEF0003EBEBC /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A525022C0CEF0003EBEBC /* SpinnerView.swift */; };
@@ -16,9 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerApp.swift; sourceTree = "<group>"; };
 		9C4C8BFA22C0CE8800BFCF2E /* Spinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C4C8C0922C0CE8900BFCF2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C4C8C0B22C0CE8900BFCF2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +41,9 @@
 				9C4C8BFC22C0CE8800BFCF2E /* Spinner */,
 				9C4C8BFB22C0CE8800BFCF2E /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C4C8BFB22C0CE8800BFCF2E /* Products */ = {
 			isa = PBXGroup;
@@ -56,6 +56,7 @@
 		9C4C8BFC22C0CE8800BFCF2E /* Spinner */ = {
 			isa = PBXGroup;
 			children = (
+				9C2A37D427BDA38300F2D539 /* SpinnerApp.swift */,
 				9C8A525022C0CEF0003EBEBC /* SpinnerView.swift */,
 				9C8A525322C0CF19003EBEBC /* Assets */,
 			);
@@ -66,8 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				9C93EE2E22C0D1D200C225F4 /* Delay.swift */,
-				9C4C8BFD22C0CE8800BFCF2E /* AppDelegate.swift */,
-				9C4C8BFF22C0CE8800BFCF2E /* SceneDelegate.swift */,
 				9C4C8C0B22C0CE8900BFCF2E /* Info.plist */,
 				9C4C8C0822C0CE8900BFCF2E /* LaunchScreen.storyboard */,
 				9C4C8C0322C0CE8900BFCF2E /* Assets.xcassets */,
@@ -85,6 +84,7 @@
 				9C4C8BF622C0CE8800BFCF2E /* Sources */,
 				9C4C8BF722C0CE8800BFCF2E /* Frameworks */,
 				9C4C8BF822C0CE8800BFCF2E /* Resources */,
+				9CA2B08427C2549600B569F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -102,7 +102,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Razeware LLC";
 				TargetAttributes = {
 					9C4C8BF922C0CE8800BFCF2E = {
@@ -140,15 +140,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9CA2B08427C2549600B569F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C4C8BF622C0CE8800BFCF2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C4C8BFE22C0CE8800BFCF2E /* AppDelegate.swift in Sources */,
+				9C2A37D527BDA38300F2D539 /* SpinnerApp.swift in Sources */,
 				9C93EE2F22C0D1D200C225F4 /* Delay.swift in Sources */,
 				9C8A525122C0CEF0003EBEBC /* SpinnerView.swift in Sources */,
-				9C4C8C0022C0CE8800BFCF2E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +211,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -216,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -252,6 +272,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -270,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -288,6 +309,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spinner/Assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +329,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spinner/Assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

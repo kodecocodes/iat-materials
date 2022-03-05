@@ -1,87 +1,96 @@
-/*
-* Copyright (c) 2014-present Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+/// Copyright (c) 2022-present Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
 
 import UIKit
 import QuartzCore
 
 // A delay function
-func delay(seconds: Double, completion: @escaping ()-> Void) {
+func delay(seconds: Double, completion: @escaping () -> Void) {
   DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
 class ViewController: UIViewController {
-
   enum AnimationDirection: Int {
     case positive = 1
     case negative = -1
   }
 
   @IBOutlet var bgImageView: UIImageView!
-  
+
   @IBOutlet var summaryIcon: UIImageView!
   @IBOutlet var summary: UILabel!
-  
+
   @IBOutlet var flightNr: UILabel!
   @IBOutlet var gateNr: UILabel!
   @IBOutlet var departingFrom: UILabel!
   @IBOutlet var arrivingTo: UILabel!
   @IBOutlet var planeImage: UIImageView!
-  
+
   @IBOutlet var flightStatus: UILabel!
   @IBOutlet var statusBanner: UIImageView!
-  
-  var snowView: SnowView!
-  
-  //MARK: view controller methods
-  
+
+  let snowView = SnowView(frame: CGRect(x: -150, y: -100, width: 300, height: 50))
+
+  // MARK: view controller methods
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     //adjust ui
     summary.addSubview(summaryIcon)
-    summaryIcon.center.y = summary.frame.size.height/2
-    
+    summaryIcon.center.y = summary.frame.size.height / 2
+
     //add the snow effect layer
-    snowView = SnowView(frame: CGRect(x: -150, y:-100, width: 300, height: 50))
     let snowClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 50))
     snowClipView.clipsToBounds = true
     snowClipView.addSubview(snowView)
     view.addSubview(snowClipView)
-    
+
     //start rotating the flights
     changeFlight(to: londonToParis)
   }
-  
-  //MARK: custom methods
-  
+
+  // MARK: custom methods
+
   func changeFlight(to data: FlightData, animated: Bool = false) {
-    
     // populate the UI with the next flight's data
     summary.text = data.summary
 
     if animated {
-      fade(imageView: bgImageView,
-           toImage: UIImage(named: data.weatherImageName)!,
-           showEffects: data.showWeatherEffects)
+      fade(
+        imageView: bgImageView,
+        toImage: UIImage(named: data.weatherImageName)!,
+        showEffects: data.showWeatherEffects
+      )
 
       let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
 
@@ -94,7 +103,11 @@ class ViewController: UIViewController {
       let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
       moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
 
-      cubeTransition(label: flightStatus, text: data.flightStatus,  direction: direction)
+      cubeTransition(
+        label: flightStatus,
+        text: data.flightStatus,
+        direction: direction
+      )
     } else {
       bgImageView.image = UIImage(named: data.weatherImageName)
       snowView.isHidden = !data.showWeatherEffects
@@ -105,7 +118,7 @@ class ViewController: UIViewController {
       arrivingTo.text = data.arrivingTo
       flightStatus.text = data.flightStatus
     }
-    
+
     // schedule next flight
     delay(seconds: 3.0) {
       self.changeFlight(to: data.isTakingOff ? parisToRome : londonToParis, animated: true)
@@ -130,16 +143,16 @@ class ViewController: UIViewController {
     auxLabel.textColor = label.textColor
     auxLabel.backgroundColor = label.backgroundColor
 
-    let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height/2.0
+    let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height / 2.0
     auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
-        .scaledBy(x: 1.0, y: 0.1)
+      .scaledBy(x: 1.0, y: 0.1)
 
     label.superview?.addSubview(auxLabel)
 
     UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
       auxLabel.transform = .identity
-        label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
-          .scaledBy(x: 1.0, y: 0.1)
+      label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
+        .scaledBy(x: 1.0, y: 0.1)
     }, completion: { _ in
       label.text = auxLabel.text
       label.transform = .identity
@@ -168,8 +181,8 @@ class ViewController: UIViewController {
     UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
       auxLabel.transform = .identity
       auxLabel.alpha = 1.0
-    }, completion: { _ in
-      //clean up
+    }, completion: {_ in
+      // clean up
       auxLabel.removeFromSuperview()
       label.text = text
       label.alpha = 1.0

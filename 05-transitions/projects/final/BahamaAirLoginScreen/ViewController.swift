@@ -1,34 +1,43 @@
-/*
- * Copyright (c) 2014-present Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+/// Copyright (c) 2022-present Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
 
 import UIKit
 
 // A delay function
-func delay(_ seconds: Double, completion: @escaping ()->Void) {
+func delay(_ seconds: Double, completion: @escaping () -> Void) {
   DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
 
 class ViewController: UIViewController {
-
   // MARK: IB outlets
 
   @IBOutlet var loginButton: UIButton!
@@ -43,7 +52,7 @@ class ViewController: UIViewController {
 
   // MARK: further UI
 
-  let spinner = UIActivityIndicatorView(style: .whiteLarge)
+  let spinner = UIActivityIndicatorView(style: .large)
   let status = UIImageView(image: UIImage(named: "banner"))
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
@@ -80,7 +89,7 @@ class ViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    heading.center.x  -= view.bounds.width
+    heading.center.x -= view.bounds.width
     username.center.x -= view.bounds.width
     password.center.x -= view.bounds.width
 
@@ -99,12 +108,28 @@ class ViewController: UIViewController {
     UIView.animate(withDuration: 0.5) {
       self.heading.center.x += self.view.bounds.width
     }
-    UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-      self.username.center.x += self.view.bounds.width
-    }, completion: nil)
-    UIView.animate(withDuration: 0.5, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-      self.password.center.x += self.view.bounds.width
-    }, completion: nil)
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0.3,
+      usingSpringWithDamping: 0.6,
+      initialSpringVelocity: 0.0,
+      options: [],
+      animations: {
+        self.username.center.x += self.view.bounds.width
+      },
+      completion: nil
+    )
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0.4,
+      usingSpringWithDamping: 0.6,
+      initialSpringVelocity: 0.0,
+      options: [],
+      animations: {
+        self.password.center.x += self.view.bounds.width
+      },
+      completion: nil
+    )
 
     UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
       self.cloud1.alpha = 1.0
@@ -122,11 +147,18 @@ class ViewController: UIViewController {
       self.cloud4.alpha = 1.0
     }, completion: nil)
 
-    UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0,
-                   options: [], animations: {
-                    self.loginButton.center.y -= 30.0
-                    self.loginButton.alpha = 1.0
-    }, completion: nil)
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0.5,
+      usingSpringWithDamping: 0.5,
+      initialSpringVelocity: 0.0,
+      options: [],
+      animations: {
+        self.loginButton.center.y -= 30.0
+        self.loginButton.alpha = 1.0
+      },
+      completion: nil
+    )
   }
 
   func showMessage(index: Int) {
@@ -135,9 +167,9 @@ class ViewController: UIViewController {
     UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionCurlDown], animations: {
       self.status.isHidden = false
     }, completion: { _ in
-      //transition completion
+      // transition completion
       delay(2.0) {
-        if index < self.messages.count-1 {
+        if index < self.messages.count - 1 {
           self.removeMessage(index: index)
         } else {
           //reset form
@@ -153,7 +185,7 @@ class ViewController: UIViewController {
       self.status.isHidden = true
       self.status.center = self.statusPosition
 
-      self.showMessage(index: index+1)
+      self.showMessage(index: index + 1)
     })
   }
 
@@ -162,22 +194,37 @@ class ViewController: UIViewController {
   @IBAction func login() {
     view.endEditing(true)
 
-    UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
-      self.loginButton.bounds.size.width += 80.0
-    }, completion: { _ in
-      self.showMessage(index: 0)
-    })
+    UIView.animate(
+      withDuration: 1.5,
+      delay: 0.0,
+      usingSpringWithDamping: 0.2,
+      initialSpringVelocity: 0.0,
+      options: [],
+      animations: {
+        self.loginButton.bounds.size.width += 80.0
+      },
+      completion: { _ in
+        self.showMessage(index: 0)
+      }
+    )
 
-    UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
-      self.loginButton.center.y += 60.0
-      self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
-      self.spinner.center = CGPoint(
-        x: 40.0,
-        y: self.loginButton.frame.size.height/2
-      )
-      self.spinner.alpha = 1.0
-    }, completion: nil)
-
+    UIView.animate(
+      withDuration: 0.33,
+      delay: 0.0,
+      usingSpringWithDamping: 0.7,
+      initialSpringVelocity: 0.0,
+      options: [],
+      animations: {
+        self.loginButton.center.y += 60.0
+        self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+        self.spinner.center = CGPoint(
+          x: 40.0,
+          y: self.loginButton.frame.size.height / 2
+        )
+        self.spinner.alpha = 1.0
+      },
+      completion: nil
+    )
   }
 
   // MARK: UITextFieldDelegate
@@ -187,5 +234,4 @@ class ViewController: UIViewController {
     nextField?.becomeFirstResponder()
     return true
   }
-
 }

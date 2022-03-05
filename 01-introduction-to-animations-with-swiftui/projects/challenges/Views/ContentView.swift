@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2022-present Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,9 +32,9 @@
 
 import SwiftUI
 
-struct ContentView : View {
+struct ContentView: View {
   @State var zoomed = false
-    
+  
   var body: some View {
     VStack(spacing: 0) {
       HeroImage(name: "hero")
@@ -41,12 +45,12 @@ struct ContentView : View {
             .offset(x: 0, y: -15)
             .padding(.leading, 30)
             .offset(x: self.zoomed ? 500 : 0, y: -15)
-            .animation(.default)
-
+            .animation(.default, value: self.zoomed)
+          
           Spacer()
         }
         
-        GeometryReader() { geometry in
+        GeometryReader { geometry in
           Image("thumb")
             .clipShape(RoundedRectangle(cornerRadius: self.zoomed ? 40 : 500 ))
             .overlay(
@@ -55,12 +59,14 @@ struct ContentView : View {
                 .scaleEffect(0.8)
             )
             .rotationEffect(self.zoomed ? Angle(degrees: 0) : Angle(degrees: 90))
-            .position(x: self.zoomed ? geometry.frame(in: .local).midX : 600,
-                      y: 50)
+            .position(
+              x: self.zoomed ? geometry.frame(in: .local).midX : 600,
+              y: 50
+            )
             .saturation(self.zoomed ? 1 : 0)
             .scaleEffect(self.zoomed ? 1.33 : 0.33)
             .shadow(radius: 10)
-            .animation(.spring())
+            .animation(.spring(), value: self.zoomed)
             .onTapGesture {
               self.zoomed.toggle()
             }
@@ -74,9 +80,9 @@ struct ContentView : View {
 }
 
 #if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+  }
 }
 #endif
