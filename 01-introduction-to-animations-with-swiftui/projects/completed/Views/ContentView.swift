@@ -34,11 +34,11 @@ import SwiftUI
 
 struct ContentView: View {
   @State var zoomed = false
-  
+
   var body: some View {
     VStack(spacing: 0) {
       HeroImage(name: "hero")
-      
+
       ZStack {
         HStack {
           TourTitle(title: "Savanna Trek", caption: "15 mile drive followed by an hour long trek")
@@ -46,10 +46,10 @@ struct ContentView: View {
             .padding(.leading, 30)
             .offset(x: self.zoomed ? 500 : 0, y: -15)
             .animation(.default, value: self.zoomed)
-          
+
           Spacer()
         }
-        
+
         Image("thumb")
           .clipShape(RoundedRectangle(cornerRadius: self.zoomed ? 40 : 500 ))
           .overlay(
@@ -67,7 +67,7 @@ struct ContentView: View {
           }
       }
       .background(Color(red: 0.1, green: 0.1, blue: 0.1))
-      
+
       MilestonesList()
     }
   }

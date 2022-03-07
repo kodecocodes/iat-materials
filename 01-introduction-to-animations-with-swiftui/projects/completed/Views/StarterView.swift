@@ -35,7 +35,7 @@ import SwiftUI
 struct StarterView: View {
   @State var currentOffset = 0
   @State var color = Color.red
-  
+
   var body: some View {
     ZStack {
       Circle()
