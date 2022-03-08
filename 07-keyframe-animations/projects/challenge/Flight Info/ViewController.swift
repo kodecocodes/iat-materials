@@ -184,7 +184,7 @@ class ViewController: UIViewController {
     UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
       auxLabel.transform = .identity
       auxLabel.alpha = 1.0
-    }, completion: {_ in
+    }, completion: { _ in
       //clean up
       auxLabel.removeFromSuperview()
       label.text = text

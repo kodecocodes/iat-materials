@@ -205,7 +205,7 @@ class ViewController: UIViewController {
       animations: {
         self.status.isHidden = false
       },
-      completion: {_ in
+      completion: { _ in
         //transition completion
         delay(seconds: 2.0) {
           if index < self.messages.count - 1 {
@@ -277,7 +277,7 @@ class ViewController: UIViewController {
       animations: {
         self.loginButton.bounds.size.width += 80.0
       },
-      completion: {_ in
+      completion: { _ in
         self.showMessage(index: 0)
       }
     )

@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9C967C5E1A4F1B6C00A588A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C967C5D1A4F1B6C00A588A2 /* AppDelegate.swift */; };
-		9C967C601A4F1B6C00A588A2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C967C5F1A4F1B6C00A588A2 /* MasterViewController.swift */; };
+		9C967C601A4F1B6C00A588A2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C967C5F1A4F1B6C00A588A2 /* MainViewController.swift */; };
 		9C967C621A4F1B6C00A588A2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C967C611A4F1B6C00A588A2 /* DetailViewController.swift */; };
 		9C967C651A4F1B6C00A588A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C967C631A4F1B6C00A588A2 /* Main.storyboard */; };
 		9C967C671A4F1B6C00A588A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C967C661A4F1B6C00A588A2 /* Images.xcassets */; };
@@ -21,13 +21,13 @@
 		9C967C581A4F1B6C00A588A2 /* LogoReveal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogoReveal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C967C5C1A4F1B6C00A588A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C967C5D1A4F1B6C00A588A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C967C5F1A4F1B6C00A588A2 /* MasterViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		9C967C5F1A4F1B6C00A588A2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9C967C611A4F1B6C00A588A2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C967C641A4F1B6C00A588A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C967C661A4F1B6C00A588A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C967C691A4F1B6C00A588A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9C967C801A4F1F6100A588A2 /* RWLogoLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLogoLayer.swift; sourceTree = "<group>"; };
-		9CB37E1C1F21204C007ADDD4 /* RevealAnimator.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; tabWidth = 2; };
+		9CB37E1C1F21204C007ADDD4 /* RevealAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,9 @@
 				9C967C5A1A4F1B6C00A588A2 /* LogoReveal */,
 				9C967C591A4F1B6C00A588A2 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9C967C591A4F1B6C00A588A2 /* Products */ = {
 			isa = PBXGroup;
@@ -61,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				9CB37E1C1F21204C007ADDD4 /* RevealAnimator.swift */,
-				9C967C5F1A4F1B6C00A588A2 /* MasterViewController.swift */,
+				9C967C5F1A4F1B6C00A588A2 /* MainViewController.swift */,
 				9C967C611A4F1B6C00A588A2 /* DetailViewController.swift */,
 				9C967C801A4F1F6100A588A2 /* RWLogoLayer.swift */,
 				9C967C5D1A4F1B6C00A588A2 /* AppDelegate.swift */,
@@ -88,6 +90,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C967C791A4F1B6C00A588A2 /* Build configuration list for PBXNativeTarget "LogoReveal" */;
 			buildPhases = (
+				79DB331927C3C11F00313A01 /* ShellScript */,
 				9C967C541A4F1B6C00A588A2 /* Sources */,
 				9C967C551A4F1B6C00A588A2 /* Frameworks */,
 				9C967C561A4F1B6C00A588A2 /* Resources */,
@@ -108,7 +111,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Razeware LLC";
 				TargetAttributes = {
 					9C967C571A4F1B6C00A588A2 = {
@@ -118,7 +121,7 @@
 				};
 			};
 			buildConfigurationList = 9C967C531A4F1B6C00A588A2 /* Build configuration list for PBXProject "LogoReveal" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -148,6 +151,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79DB331927C3C11F00313A01 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C967C541A4F1B6C00A588A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -155,7 +178,7 @@
 			files = (
 				9C967C821A4F1F6100A588A2 /* RWLogoLayer.swift in Sources */,
 				9C967C621A4F1B6C00A588A2 /* DetailViewController.swift in Sources */,
-				9C967C601A4F1B6C00A588A2 /* MasterViewController.swift in Sources */,
+				9C967C601A4F1B6C00A588A2 /* MainViewController.swift in Sources */,
 				9C967C5E1A4F1B6C00A588A2 /* AppDelegate.swift in Sources */,
 				9CB37E1D1F21204C007ADDD4 /* RevealAnimator.swift in Sources */,
 			);
@@ -206,6 +229,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -230,7 +254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -261,6 +285,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -278,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -290,7 +315,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LogoReveal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -303,10 +331,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LogoReveal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};

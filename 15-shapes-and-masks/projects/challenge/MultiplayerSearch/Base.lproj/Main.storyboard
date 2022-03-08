@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,15 +10,19 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MultiplayerSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="snv-ug-JSF"/>
+                        <viewControllerLayoutGuide type="bottom" id="gaj-U3-81E"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-boxingring" id="MTB-rS-WaD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-boxingring" translatesAutoresizingMaskIntoConstraints="NO" id="MTB-rS-WaD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="xfC-av-MpC" customClass="AvatarView" customModule="MultiplayerSearch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xfC-av-MpC" customClass="AvatarView" customModule="MultiplayerSearch" customModuleProvider="target">
                                 <rect key="frame" x="24" y="202" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -29,16 +30,14 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="empty"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for opponents..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="ztv-HI-Tsd">
-                                <rect key="frame" x="72" y="46" width="232" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for opponents..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztv-HI-Tsd">
+                                <rect key="frame" x="89" y="46" width="198" height="68"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="29"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" id="4YQ-aS-wOd">
-                                <rect key="frame" x="28" y="577" width="320" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YQ-aS-wOd">
+                                <rect key="frame" x="28" y="584" width="319" height="48"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="31"/>
                                 <color key="tintColor" red="0.90196078430000004" green="0.81989910440000002" blue="0.20475495020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="2" height="2"/>
@@ -54,7 +53,7 @@
                                     <action selector="actionSearchAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="0g1-hO-AWV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="eah-8E-7Eb" customClass="AvatarView" customModule="MultiplayerSearch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eah-8E-7Eb" customClass="AvatarView" customModule="MultiplayerSearch" customModuleProvider="target">
                                 <rect key="frame" x="261" y="202" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,9 +62,8 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="image" value="avatar-1"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oQg-gW-XLG">
-                                <rect key="frame" x="160" y="227" width="58" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQg-gW-XLG">
+                                <rect key="frame" x="163" y="227" width="49" height="42"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -77,18 +75,29 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oQg-gW-XLG" firstAttribute="top" secondItem="snv-ug-JSF" secondAttribute="bottom" constant="227" id="Iae-px-Zcg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4YQ-aS-wOd" secondAttribute="trailing" constant="12" id="MCJ-yr-f4r"/>
+                            <constraint firstItem="ztv-HI-Tsd" firstAttribute="top" secondItem="snv-ug-JSF" secondAttribute="bottom" constant="46" id="RyT-Up-wpF"/>
+                            <constraint firstItem="gaj-U3-81E" firstAttribute="top" secondItem="4YQ-aS-wOd" secondAttribute="bottom" constant="35" id="S6p-nR-T9j"/>
+                            <constraint firstItem="ztv-HI-Tsd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TBn-Ty-f8w"/>
+                            <constraint firstItem="4YQ-aS-wOd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="efh-KS-vRt"/>
+                            <constraint firstItem="oQg-gW-XLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ji6-du-blv"/>
+                            <constraint firstItem="ztv-HI-Tsd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="55" id="o9c-Tq-y6z"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ztv-HI-Tsd" secondAttribute="trailing" constant="55" id="yct-uh-Icy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="myAvatar" destination="eah-8E-7Eb" id="eSq-1k-zHI"/>
                         <outlet property="opponentAvatar" destination="xfC-av-MpC" id="Old-W6-eF2"/>
                         <outlet property="searchAgain" destination="4YQ-aS-wOd" id="hwN-qD-Bxg"/>
                         <outlet property="status" destination="ztv-HI-Tsd" id="Rz9-tR-4kt"/>
-                        <outlet property="vs" destination="oQg-gW-XLG" id="Btf-KC-O6n"/>
+                        <outlet property="versus" destination="oQg-gW-XLG" id="Btf-KC-O6n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="219" y="361"/>
+            <point key="canvasLocation" x="317.39130434782612" y="241.74107142857142"/>
         </scene>
     </scenes>
     <resources>

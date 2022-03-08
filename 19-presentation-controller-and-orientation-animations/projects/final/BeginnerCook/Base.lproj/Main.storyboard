@@ -71,40 +71,18 @@ Culinary use typically distinguishes herbs as referring to the leafy green parts
                             <constraint firstAttribute="trailingMargin" secondItem="txz-nY-nRC" secondAttribute="trailing" constant="-16" id="4tI-Da-30a"/>
                             <constraint firstAttribute="centerX" secondItem="ePZ-v5-lFK" secondAttribute="centerX" id="4tq-GK-Qvi"/>
                             <constraint firstItem="xDX-Uu-2Ap" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="IzJ-5d-dNp"/>
-                            <constraint firstItem="ePZ-v5-lFK" firstAttribute="centerX" secondItem="xDX-Uu-2Ap" secondAttribute="centerX" id="KwM-gv-i6y"/>
                             <constraint firstItem="xDX-Uu-2Ap" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="0.25" id="LSM-hq-uEa"/>
                             <constraint firstItem="7tj-Ma-gJv" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.33" id="Lbb-Db-lb1"/>
-                            <constraint firstItem="ePZ-v5-lFK" firstAttribute="top" secondItem="xDX-Uu-2Ap" secondAttribute="bottom" constant="15" id="M5G-pV-UNC"/>
                             <constraint firstItem="txz-nY-nRC" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Q3F-m6-Zhc"/>
                             <constraint firstItem="ePZ-v5-lFK" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.9" id="US8-Tb-jA6"/>
-                            <constraint firstItem="ePZ-v5-lFK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ZkH-xh-a7u"/>
                             <constraint firstItem="ePZ-v5-lFK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="0.85" id="a5Q-26-4m0"/>
-                            <constraint firstItem="ePZ-v5-lFK" firstAttribute="centerX" secondItem="7tj-Ma-gJv" secondAttribute="centerX" id="ax2-nR-kQa"/>
-                            <constraint firstAttribute="centerY" secondItem="ePZ-v5-lFK" secondAttribute="centerY" constant="49.5" id="bcT-YR-lKW"/>
                             <constraint firstAttribute="bottom" secondItem="txz-nY-nRC" secondAttribute="bottom" id="bgI-rD-BzP"/>
                             <constraint firstItem="txz-nY-nRC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="gwD-IN-P5G"/>
                             <constraint firstAttribute="bottom" secondItem="7tj-Ma-gJv" secondAttribute="bottom" id="isc-Po-Iz9"/>
-                            <constraint firstItem="xDX-Uu-2Ap" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="kHg-Mb-u4j"/>
                             <constraint firstAttribute="centerX" secondItem="7tj-Ma-gJv" secondAttribute="centerX" id="mrv-Ge-jVJ"/>
-                            <constraint firstItem="7tj-Ma-gJv" firstAttribute="top" secondItem="ePZ-v5-lFK" secondAttribute="bottom" constant="28" id="o4P-xx-UxM"/>
-                            <constraint firstItem="xDX-Uu-2Ap" firstAttribute="centerX" secondItem="7tj-Ma-gJv" secondAttribute="centerX" id="v2b-lP-ZOl"/>
                             <constraint firstAttribute="width" secondItem="7tj-Ma-gJv" secondAttribute="width" id="viE-Nq-ovM"/>
-                            <constraint firstItem="7tj-Ma-gJv" firstAttribute="top" secondItem="ePZ-v5-lFK" secondAttribute="bottom" constant="28" id="yV5-lH-mki"/>
                             <constraint firstAttribute="centerX" secondItem="xDX-Uu-2Ap" secondAttribute="centerX" id="zI3-gB-fQa"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="kHg-Mb-u4j"/>
-                                <exclude reference="v2b-lP-ZOl"/>
-                                <exclude reference="KwM-gv-i6y"/>
-                                <exclude reference="M5G-pV-UNC"/>
-                                <exclude reference="ZkH-xh-a7u"/>
-                                <exclude reference="ax2-nR-kQa"/>
-                                <exclude reference="bcT-YR-lKW"/>
-                                <exclude reference="o4P-xx-UxM"/>
-                                <exclude reference="yV5-lH-mki"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="bgImage" destination="txz-nY-nRC" id="8yw-gf-Dn7"/>
